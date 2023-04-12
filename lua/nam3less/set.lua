@@ -18,7 +18,11 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
-vim.opt.termguicolors = true
+-- if (os.getenv("TERM_PROGRAM") ~= "Apple_Terminal") then
+--     vim.opt.termguicolors = true
+-- else
+--     vim.opt.termguicolors = false
+-- end
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
@@ -27,4 +31,3 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
-
