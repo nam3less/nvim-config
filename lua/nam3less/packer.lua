@@ -63,4 +63,5 @@ return require('packer').startup(function(use)
     })
 
     use("folke/zen-mode.nvim")
+    use("folke/which-key.nvim")
 end)
