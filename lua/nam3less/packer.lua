@@ -32,6 +32,7 @@ return require('packer').startup(function(use)
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
     use('tpope/vim-commentary')
+    use('tpope/vim-unimpaired')
 
     use({
         'VonHeikemen/lsp-zero.nvim',
@@ -64,4 +65,15 @@ return require('packer').startup(function(use)
 
     use("folke/zen-mode.nvim")
     use("folke/which-key.nvim")
+    use({
+        "folke/trouble.nvim",
+        requires = "nvim-tree/nvim-web-devicons",
+    })
+
+    use({
+        "danymat/neogen",
+        requires = "nvim-treesitter/nvim-treesitter",
+        -- Uncomment next line if you want to follow only stable versions
+        tag = "*",
+    })
 end)

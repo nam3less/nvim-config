@@ -1,6 +1,6 @@
 local zenmode = require('zen-mode')
 
-vim.keymap.set('n', '<leader>zz', function ()
+local function OpenZenmode()
     zenmode.setup({
         window = {
             backdrop = 1,
@@ -12,5 +12,7 @@ vim.keymap.set('n', '<leader>zz', function ()
     -- vim.wo.number = true
     -- vim.wo.rnu = true
     ColorMyPencils()
-end)
+end
+
+vim.keymap.set('n', '<leader>zz', OpenZenmode, { desc = 'Toggle zenmode'})
 

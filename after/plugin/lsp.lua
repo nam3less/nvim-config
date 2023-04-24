@@ -4,9 +4,6 @@ local cmp_action = lsp.cmp_action()
 
 cmp.setup({
     preselect = 'item',
-    completion = {
-        completeopt = 'menu,menuone,noinsert'
-    },
     mapping = {
         ['<cr>'] = cmp.mapping.confirm(),
         ['<tab>'] = cmp_action.tab_complete(),
@@ -26,7 +23,8 @@ lsp.ensure_installed({
     "jedi_language_server"
 })
 
-lsp.setup()
-
 -- (Optional) Configure lua language server for neovim
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
+lsp.setup()
+
