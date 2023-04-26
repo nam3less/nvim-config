@@ -13,8 +13,8 @@ return require('packer').startup(function(use)
     -- Beauty
     use('andersevenrud/nordic.nvim')
     use({
-        "catppuccin/nvim",
-        as = "catppuccin"
+        'catppuccin/nvim',
+        as = 'catppuccin',
     })
     use({
         'nvim-lualine/lualine.nvim',
@@ -28,6 +28,27 @@ return require('packer').startup(function(use)
     })
     use('nvim-treesitter/playground')
     use('nvim-treesitter/nvim-treesitter-context')
+
+    -- Automatic closing of shit
+    use({
+        'windwp/nvim-autopairs',
+        config = function()
+            require('nvim-autopairs').setup()
+        end,
+        requires = {
+            {'nvim-treesitter/nvim-treesitter'}
+        }
+    })
+    use({
+        'windwp/nvim-ts-autotag',
+        config = function()
+            require('nvim-ts-autotag').setup()
+        end,
+        requires = {
+            {'nvim-treesitter/nvim-treesitter'}
+        }
+    })
+
 
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
@@ -62,6 +83,6 @@ return require('packer').startup(function(use)
         end
     })
 
-    use("folke/zen-mode.nvim")
-    use("folke/which-key.nvim")
+    use('folke/zen-mode.nvim')
+    use('folke/which-key.nvim')
 end)
