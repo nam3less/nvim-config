@@ -20,11 +20,36 @@ lsp.ensure_installed({
 	"lua_ls",
     "jdtls",
     "kotlin_language_server",
-    "jedi_language_server"
+    "pylsp"
 })
 
 -- (Optional) Configure lua language server for neovim
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
+require('lspconfig').pylsp.setup({
+    settings = {
+        pylsp = {
+            plugins = {
+                rope_autoimport = {
+                    enabled = true
+                },
+                mypy = {
+                    enabled = true
+                }
+            }
+        }
+    }
+})
+
+lsp.on_attach(function (client, bufnr)
+    local opts = {buffer = bufnr, remap = false}
+
+    vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
+    vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
+    vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, opts)
+    vim.keymap.set('n', '<leader>cr', function() vim.lsp.buf.references() end, opts)
+    vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
+end)
 
 lsp.setup()
 

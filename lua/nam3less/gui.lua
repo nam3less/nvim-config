@@ -2,9 +2,9 @@ function ColorMyPencils()
     local bg_transparent = true
 
     if vim.g.neovide then
-        vim.o.guifont = "FiraCode Nerd Font:h11"
+        vim.o.guifont = "FiraCode Nerd Font:h12"
         -- vim.g.transparency = math.floor(255 * 0.9)
-        vim.g.neovide_transparency = 0.9
+        -- vim.g.neovide_transparency = 0.9
         bg_transparent = false
     end
 
