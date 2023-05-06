@@ -1,6 +1,7 @@
 local lsp = require('lsp-zero')
 local cmp = require('cmp')
 local cmp_action = lsp.cmp_action()
+local lspconfig = require('lspconfig')
 
 cmp.setup({
     preselect = 'item',
@@ -16,7 +17,6 @@ lsp.preset('recommended')
 lsp.ensure_installed({
 	"tsserver",
 	"eslint",
-	"rust_analyzer",
 	"lua_ls",
     "jdtls",
     "kotlin_language_server",
@@ -24,9 +24,9 @@ lsp.ensure_installed({
 })
 
 -- (Optional) Configure lua language server for neovim
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 
-require('lspconfig').pylsp.setup({
+lspconfig.pylsp.setup({
     settings = {
         pylsp = {
             plugins = {
@@ -45,7 +45,7 @@ lsp.on_attach(function (client, bufnr)
     local opts = {buffer = bufnr, remap = false}
 
     vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
-    vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
+    vim.keymap.set('n', '<leader>ch', function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, opts)
     vim.keymap.set('n', '<leader>cr', function() vim.lsp.buf.references() end, opts)
     vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
